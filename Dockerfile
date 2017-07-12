@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER dieKeuleCT <koehlmeier@gmail.com>
 
-RUN apk add --update --no-cache tini postfix postfix-mysql rsyslog bash mysql-client && \
+RUN apk add --update --no-cache tini postfix postfix-mysql rsyslog bash mysql-client spamassassin && \
 	mkdir /mail && chmod 0750 /mail && \
 #for testing and building  \
 	apk add --update nano && \
