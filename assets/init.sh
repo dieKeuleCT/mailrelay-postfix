@@ -104,5 +104,6 @@ fi
 # Actually run Postfix
 newaliases
 rm -f /var/run/rsyslogd.pid
+/usr/sbin/postgrey --pidfile=/var/run/postgrey.pid --daemonize --inet=10023
 /usr/lib/postfix/master &
 rsyslogd -n
