@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER dieKeuleCT <koehlmeier@gmail.com>
 
-RUN apk add --update --no-cache tini postfix postfix-mysql rsyslog bash mysql-client spamassassin && \
+RUN apk add --update --no-cache tini postfix postfix-mysql rsyslog bash mysql-client spamassassin postgrey && \
 	mkdir /mail && chmod 0750 /mail && \
 #for testing and building  \
 	apk add --update nano && \
@@ -11,6 +11,7 @@ RUN apk add --update --no-cache tini postfix postfix-mysql rsyslog bash mysql-cl
 COPY assets/conf /etc/postfixtemplate
 COPY assets/rsyslog.conf /etc/rsyslog.conf
 COPY assets/init.sh /init.sh
+COPY assets/sa-update /usr/bin/sa-update
 
 RUN chmod 0755 /init.sh && \
 	mv /var/spool/postfix /postfixtemplate
